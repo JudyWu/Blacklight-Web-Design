@@ -1,0 +1,125 @@
+body {
+	background: url("bg.png") repeat scroll 0 0 #222930 !important;
+}
+.ui-body-c, .ui-overlay-c {
+	background: none;
+}
+#toppart {
+	text-align: right;
+	margin: 0px;
+   
+    background-color: #668B8B;
+    background: -moz-linear-gradient(top,#40E0D0, #00868B);  
+    background-image: -ms-linear-gradient(top, #00CED1, #00C5CD);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00CED1), to(#00C5CD));
+    background-image: -webkit-linear-gradient(top, #00CED1, #00C5CD);
+    background-image: -o-linear-gradient(top, #00CED1, #00C5CD);
+    background-image: linear-gradient(top, #00CED1, #00C5CD);
+    background-repeat: repeat-x;
+}
+#toppart h1 {
+	float: left;
+	color: white;
+    font-family: "Georgia", Serif;      
+    font-weight: normal;
+    font-style: italic;
+    padding: 4px 4px 4px 130px; 
+    cursor: pointer;
+}
+#nav {
+	float: right;
+	color: white;
+	padding-top: 20px;
+	padding-right: 130px;
+	cursor: pointer;
+}
+.clear { clear: both;}
+#uploadarea_left {
+	float: left;
+	margin-top: 140px;
+	font-size: 20px;
+
+}
+#uploadarea_left ul li {
+	list-style-type: none;
+	padding: 20px;
+
+}
+#picturebox_middle {
+	   position: absolute;
+	   margin: 0 auto;
+       margin-top:  35px;
+	   left: 230px;
+       height: 500px;
+       width: 650px;
+       /*border: 1px solid white;
+       background: #EEEEE0;*/
+}
+
+#image {
+	position: absolute;
+	clip: auto;
+}
+#toolsbar_right  {
+    
+	float: right;
+    
+	top: 100px;
+	
+	padding: 28px;
+	position: ;
+
+    margin-right: 95px;
+    margin-top: 5px;
+}
+#toolsbar_right li {
+    position: relative;
+	font-size: 18px;
+	color: white;
+	text-align: center;
+	padding: 3px;
+	background: #008B8B;
+	margin: 4px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 9px;
+    list-style-type: none;
+    /*-webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;*/ 
+
+
+}
+input {
+    text-align: center;
+}
+#blur {
+
+	float: right;
+	position: absolute;
+	padding-right: -10px;
+	padding-left: 15px;
+	padding-top: 2px;
+}
+#cropValue  {
+	visibility: none;
+	
+}
+.hover {
+     /*margin-top: 2px;*/
+     color: #008080;
+     cursor: pointer;
+}
+
+.hoverImg  {
+	cursor: crosshair;
+}
+#footer {
+	
+	clear: both;
+	text-align: right;
+	margin-right: 25px;
+	padding-bottom: 10px;
+    
+    
+}

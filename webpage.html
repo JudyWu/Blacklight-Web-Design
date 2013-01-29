@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+	<title>Health Device</title>
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+    <link rel="stylesheet" type="text/css" href="jquery.Jcrop.css" />
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="pixastic.custom.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js" type="text/javascript"></script> 
+    <!--For the slider-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="jquery.Jcrop.min.js"></script>
+    
+    <script type="text/javascript" src="crop.js"></script>
+    <!--For the cropping-->
+
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div id="toppart">
+		<h1>Black Light</h1>
+		<div id="nav">Home | About Us | Download | Usage | Contact Us</div>
+		<div class="clear"></div>
+	</div>
+	<div id="bottompart">
+		<div id="uploadarea_left">
+			<ul>
+				<li id="uploadImage">Upload Image</li>
+				<li id="saveImage">Save Image</li>
+			</ul>
+   
+		</div>
+		<div id="picturebox_middle">
+				<img src="JudyWu.jpg" id="image" class="picture" />
+		</div>
+		<div id="toolsbar_right">
+			<ul>
+				
+					
+				<li class="blur">
+						
+						<p class="blurIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Blur </p>
+						<div class="blurValue" >
+							<label for="sliderBl" style="font-size: 18px;">Amount</label>
+							<input type="range" name="sliderBl" id="sliderBl" min="0" max="5" value="0.5" step="0.1"data-highlight="true" data-mini="true" />
+                            <button type="button" id="blur" onclick="blurImg();" data-inline="true" data-mini="true" date-theme="d" >Blur</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+                        
+
+				</li>
+					
+				
+				<li id="bc">
+
+
+					<p class="bcIcon" style="height: 10px;">Brightness/Contrast</p>
+					<div class="bcValue">
+						<label for="sliderBr" style="font-size: 18px;">Brightness</label>
+					    <input type="range" name="sliderBr" id="sliderBr" min="-150" max="150" value="30" data-highlight="true" data-mini="true" />
+					    <label for="sliderCon" style="font-size: 18px;">Contrast</label>
+					    <input type="range" name="sliderCon" id="sliderCon" min="-1" max="3" value="0.3" step="0.1" data-highlight="true" data-mini="true" />
+					    <button type="button" id="adjustB/C" data-inline="true" data-mini="true" date-theme="d" onclick="brightImg();">Adjust B/C</button>
+					    <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					</div>
+					
+
+				</li>
+
+				<li id="colorAdjust">
+                    <p class="caIcon" style="height: 10px;">Color Adjust</p>
+					<div class="caValue">
+						<label for="sliderRe" style="font-size: 18px;">Red</label>
+					    <input type="range" name="sliderRe" id="sliderRe" min="-1" max="1" value="0.5" step="0.01" data-highlight="true" data-mini="true" />
+					    <label for="sliderGr" style="font-size: 18px;">Green</label>
+					    <input type="range" name="sliderGr" id="sliderGr" min="-1" max="1" value="0" step="0.01" data-highlight="true" data-mini="true" />
+					    <label for="sliderBlue" style="font-size: 18px;">Blue</label>
+					    <input type="range" name="sliderBlue" id="sliderBlue" min="-1" max="1" value="0" step="0.01" data-highlight="true" data-mini="true" />
+					    <button type="button" id="adjustColor" data-inline="true" data-mini="true" date-theme="d" onclick="colorImg();">Adjust Color</button>
+					    <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					</div>
+
+				</li>
+
+				<li id="crop" >
+					<p class="cropIcon" style="height: 10px;">Crop</p>
+					<div class="cropValue">
+						    <ul>
+				               <li>
+				               	<input type="text" name="x" id="x" />
+		                        <label for="x" style="font-size: 18px;">X</label>
+                			   </li>
+            				   <li>
+                				<input type="text" name="y" id="y" />
+                                <label for="y" style="font-size: 18px;">Y</label> 
+                               <li>
+                				<input type="text" name="w" id="w" />
+                				<label for="w" style="font-size: 18px;">W</label>
+                               </li>
+                               <li>
+                				<input type="text" name="h" id="h" />
+                				<label for="h" style="font-size: 18px;">H</label>
+                			   </li>
+            				</ul>
+					 <button type="button" id="cropButton" data-inline="true" data-mini="true" date-theme="d" onclick="cropImg();">Crop</button>
+					 <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					 </div>
+				</li>
+
+				<li id="desaturate" onclick="desaturateImg();">
+					Desaturate
+				</li>
+
+				<li id="edgeDetection" onclick="edgeImg();">
+					Edge Detection
+				</li>
+
+				<li id="flipHori" onclick="flipHImg();">
+					Flip Horizontally
+				</li>
+				
+				<li id="flipVerti" onclick="flipVImg();">
+					Flip Vertically
+				</li>
+
+				<li id="glow">
+				
+					<p class="glowIcon" style="height: 10px;">Glow</p>
+					<div class="glowValue">
+						<label for="sliderGlowA" style="font-size: 18px;">Amount</label>
+					    <input type="range" name="sliderGlowA" id="sliderGlowA" min="0" max="1" value="0.3" step="0.01" data-highlight="true" data-mini="true" />
+					    <label for="sliderGlowR" style="font-size: 18px;">Radius</label>
+					    <input type="range" name="sliderGlowR" id="sliderGlowR" min="0" max="1" value="0.2" step="0.01" data-highlight="true" data-mini="true" />
+					    <button type="button" id="glow" data-inline="true" data-mini="true" date-theme="d" onclick="glowImg();">Glow</button>
+					    <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					</div>
+
+
+
+				</li>
+
+				<li id="hsl">
+		
+					<p class="hslIcon" style="height: 10px;">Hue/Saturation/Lightness</p>
+					<div class="hslValue">
+						<label for="sliderHue" style="font-size: 18px;">Hue</label>
+					    <input type="range" name="sliderHue" id="sliderHue" min="-180" max="180" value="72" data-highlight="true" data-mini="true" />
+					    <label for="sliderSat" style="font-size: 18px;">Saturation</label>
+					    <input type="range" name="sliderSat" id="sliderSat" min="-100" max="100" value="-20" data-highlight="true" data-mini="true" />
+					    <label for="sliderLight" style="font-size: 18px;">Lightness</label>
+					    <input type="range" name="sliderLight" id="sliderLight" min="-1" max="1" value="0" data-highlight="true" data-mini="true" />
+					    <button type="button" id="adjustHSL" data-inline="true" data-mini="true" date-theme="d" onclick="hslImg();">Adjust HSL</button>
+					    <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					</div>
+				</li>
+
+				<li id="invert" onclick="invertImg();">
+					Invert
+				</li>
+				<li id="lighten">
+					
+					<p class="lightenIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Lighten</p>
+						<div class="lightenValue" >
+							<label for="sliderLighten" style="font-size: 18px;">Amount</label>
+							<input type="range" name="sliderLighten" id="sliderLighten" min="-1" max="1" value="0" step="0.1" data-highlight="true" data-mini="true" />
+                            <button type="button" id="lighten" onclick="lightenImg();" data-inline="true" data-mini="true" date-theme="d" >Lighten</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+
+				</li>
+				<li id="mosaic">
+					
+                    <p class="mosaicIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Mosaic</p>
+						<div class="mosaicValue" >
+							<label for="sliderMosaic" style="font-size: 18px;">Block Size</label>
+							<input type="range" name="sliderMosaic" id="sliderMosaic" min="0" max="100" value="10" data-highlight="true" data-mini="true" />
+                            <button type="button" id="mosaic" onclick="mosaicImg();" data-inline="true" data-mini="true" date-theme="d" >Mosaic</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+                     
+
+				</li>
+ 
+                <li id="noise">
+
+                	<p class="noiseIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Noise</p>
+						<div class="noiseValue" >
+							<label for="sliderNoiseA" style="font-size: 18px;">Amount</label>
+							<input type="range" name="sliderNoiseA" id="sliderNoiseA" min="0" max="1" value="0.5" step="0.01" data-highlight="true" data-mini="true" />
+							<label for="sliderNoiseS" style="font-size: 18px;">Strength</label>
+							<input type="range" name="sliderNoiseS" id="sliderNoiseS" min="0" max="1" value="0.5" step="0.01" data-highlight="true" data-mini="true" />
+                            <button type="button" id="noise" onclick="noiseImg();" data-inline="true" data-mini="true" date-theme="d" >Add Noise</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+
+                </li>
+
+				<li id="posterize">
+				
+
+                <p class="posterIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Posterize</p>
+						<div class="posterValue" >
+							<label for="sliderPoster" style="font-size: 18px;">Levels</label>
+							<input type="range" name="sliderPoster" id="sliderPoster" min="1" max="32" value="6" data-highlight="true" data-mini="true" />
+                            <button type="button" id="poster" onclick="posterImg();" data-inline="true" data-mini="true" date-theme="d" >Posterize</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+
+				</li>
+
+				<li id="rotate" onclick="rotateImg();">
+					Rotate
+				</li>	
+
+
+				<li id="sharpen">
+				
+					<p class="sharpenIcon" style="text-align: center; font-size: 18px; height: 10px; padding-top: 2px;">Sharpen</p>
+						<div class="sharpenValue" >
+							<label for="sliderSharpen" style="font-size: 18px;">Amount</label>
+							<input type="range" name="sliderSharpen" id="sliderSharpen" min="0" max="1" value="0.5" step="0.01" data-highlight="true" data-mini="true" />
+                            <button type="button" id="sharpen" onclick="sharpenImg();" data-inline="true" data-mini="true" date-theme="d" >Sharpen</button>
+                            <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+						</div>
+
+
+
+
+				</li>
+				<li id="solarize" onclick="solarizeImg();">
+					Solarize
+				</li>
+				<li id="unsharpMask">
+					
+                <p class="unsharpIcon" style="height: 10px;">Unsharp Mask</p>
+					<div class="unsharpValue">
+						<label for="sliderUnsharpA" style="font-size: 18px;">Amount</label>
+					    <input type="range" name="sliderUnsharpA" id="sliderUnsharpA" min="0" max="500" value="100" data-highlight="true" data-mini="true" />
+					    <label for="sliderRadius" style="font-size: 18px;">Radius</label>
+					    <input type="range" name="sliderRadius" id="sliderRadius" min="0" max="5" value="1" step="0.05" data-highlight="true" data-mini="true" />
+					    <label for="sliderThres" style="font-size: 18px;">Threshold</label>
+					    <input type="range" name="sliderThres" id="sliderThres" min="0" max="255" value="13" data-highlight="true" data-mini="true" />
+					    <button type="button" id="unsharp" data-inline="true" data-mini="true" date-theme="d" onclick="unsharpImg();">Unsharp Mask</button>
+					    <button type="button" onclick="resetImg();" value="Reset" data-inline="true" data-mini="true" data-theme="b" data-role="button">Reset</button>
+					</div>
+
+
+				</li>
+				<li id="zoomIn">Zoom In</li>
+				<li id="zoomOut">Zoom Out</li>
+			</ul> 
+		</div>
+	</div>
+	<!--<div data-role="fieldcontain">
+		<label for="commentArea">Comment :</label>
+		<textarea name="commentArea" id="commentArea" data-mini="true" style="margin: 0 auto;"></textarea>
+
+	</div>-->
+	<div id="footer">
+		<div>@2012 Copyright</div>
+		
+	</div>
+</body>
+</html>
